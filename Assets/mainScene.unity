@@ -168,7 +168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ca20d055e0b749dca09b908d389b34a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardID: 0
+  cardID: 6
   cardObject: {fileID: 0}
 --- !u!61 &7003186
 BoxCollider2D:
@@ -388,7 +388,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ca20d055e0b749dca09b908d389b34a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardID: 0
+  cardID: 12
   cardObject: {fileID: 0}
 --- !u!61 &322936725
 BoxCollider2D:
@@ -414,6 +414,7 @@ GameObject:
   - component: {fileID: 450847340}
   - component: {fileID: 450847339}
   - component: {fileID: 450847341}
+  - component: {fileID: 450847342}
   m_Layer: 0
   m_Name: card04
   m_TagString: Untagged
@@ -483,6 +484,19 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1.14, y: 1.77}
+--- !u!114 &450847342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 450847338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ca20d055e0b749dca09b908d389b34a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardID: 5
+  cardObject: {fileID: 0}
 --- !u!1 &569145294
 GameObject:
   m_ObjectHideFlags: 0
@@ -560,7 +574,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ca20d055e0b749dca09b908d389b34a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardID: 0
+  cardID: 5
   cardObject: {fileID: 0}
 --- !u!61 &569145298
 BoxCollider2D:
@@ -653,7 +667,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ca20d055e0b749dca09b908d389b34a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardID: 0
+  cardID: 2
   cardObject: {fileID: 0}
 --- !u!61 &943159128
 BoxCollider2D:
@@ -746,7 +760,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ca20d055e0b749dca09b908d389b34a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardID: 0
+  cardID: 1
   cardObject: {fileID: 0}
 --- !u!61 &1158041937
 BoxCollider2D:
@@ -839,7 +853,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ca20d055e0b749dca09b908d389b34a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardID: 0
+  cardID: 9
   cardObject: {fileID: 0}
 --- !u!61 &1213938681
 BoxCollider2D:
@@ -932,7 +946,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ca20d055e0b749dca09b908d389b34a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardID: 0
+  cardID: 11
   cardObject: {fileID: 0}
 --- !u!61 &1215720495
 BoxCollider2D:
@@ -1025,7 +1039,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ca20d055e0b749dca09b908d389b34a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardID: 0
+  cardID: 3
   cardObject: {fileID: 0}
 --- !u!61 &1275223148
 BoxCollider2D:
@@ -1118,7 +1132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ca20d055e0b749dca09b908d389b34a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardID: 0
+  cardID: 10
   cardObject: {fileID: 0}
 --- !u!61 &1291734420
 BoxCollider2D:
@@ -1211,7 +1225,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ca20d055e0b749dca09b908d389b34a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardID: 0
+  cardID: 13
   cardObject: {fileID: 0}
 --- !u!61 &1524685376
 BoxCollider2D:
@@ -1304,7 +1318,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ca20d055e0b749dca09b908d389b34a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardID: 0
+  cardID: 7
   cardObject: {fileID: 0}
 --- !u!61 &1673201269
 BoxCollider2D:
@@ -1411,7 +1425,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ca20d055e0b749dca09b908d389b34a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardID: 0
+  cardID: 8
   cardObject: {fileID: 0}
 --- !u!61 &1924013413
 BoxCollider2D:
@@ -1530,6 +1544,7 @@ GameObject:
   - component: {fileID: 2121513020}
   - component: {fileID: 2121513019}
   - component: {fileID: 2121513021}
+  - component: {fileID: 2121513022}
   m_Layer: 0
   m_Name: card09
   m_TagString: Untagged
@@ -1599,3 +1614,16 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1.14, y: 1.77}
+--- !u!114 &2121513022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2121513018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ca20d055e0b749dca09b908d389b34a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardID: 8
+  cardObject: {fileID: 0}

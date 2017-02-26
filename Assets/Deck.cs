@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Deck : MonoBehaviour {
 
-	private static int[] startingDeck = {
+	private static int[] _startingDeck = {
 		85, 86, 87, 89, 90, 91, 93, 94, 95, 101, 102, 103,
 		105, 106, 107, 109, 110, 111, 117, 118, 119, 121,
 		122, 123, 125, 126, 127, 149, 150, 151, 153, 154,
@@ -15,14 +15,35 @@ public class Deck : MonoBehaviour {
 		245, 246, 247, 249, 250, 251, 253, 254, 255
 	};
 
+	private int[] _deck;
+
 
 	// Use this for initialization
 	void Start () {
-		
+		_deck = new int[81];
+
+		for(int i=0; i<81; i++){
+			_deck[i] = _startingDeck[i];	
+		}
+			
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		
 	}
+
+
+	public void shuffle(){
+		int temp;
+		int randomIndex;
+		for(int i=0; i<81; i++){
+			randomIndex = Random.Range (0, i);
+			temp = _deck[i];
+			_deck[i] = _deck[randomIndex];
+			_deck[randomIndex] = temp;
+		}
+
+	}
+
 }
