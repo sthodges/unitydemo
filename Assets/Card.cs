@@ -6,7 +6,7 @@ public class Card: MonoBehaviour {
 
 	[SerializeField] private int cardID;
 	[SerializeField] private GameObject cardObject;
-	[SerializeFiled] private GameObject parent;
+	[SerializeField] private GameObject parent;
 
 	[SerializeField] private Sprite initialImage;
 	private Sprite _image;
