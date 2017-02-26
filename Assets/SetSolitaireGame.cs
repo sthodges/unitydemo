@@ -6,7 +6,7 @@ public class SetSolitaireGame : MonoBehaviour {
 
 	private Deck deck;
 	[SerializeField] private Card[] cards;
-	[SerializeField] private Sprite[] images;
+	[SerializeField] private Sprite[] glyphImages;
 
 	// Use this for initialization
 	void Start () {

@@ -52,6 +52,7 @@ public class Deck {
 
 	}
 
+	// TODO: add bounds checking (?) if necessary
 	public int getCard(){
 		int temp = _deck[_cardIndex];
 		_cardIndex += 1;
