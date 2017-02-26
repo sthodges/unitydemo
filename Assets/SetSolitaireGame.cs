@@ -74,12 +74,53 @@ public class SetSolitaireGame : MonoBehaviour {
 		
 	}
 
+	// do these three cards (by value) make a set?
+	private bool isASet(int [] cards){
+		//Debug.Log (" [1] " + cards [0] + "     [2] " + cards [1] + "     [3] " + cards [2]); // good
+
+		return false;
+	}
+
+
+
+	private void checkForThreeCardsSelected(){
+		int [] cardArray = new int[3];
+		bool result;
+
+		if (selectedCards.Count == 3) {
+			//Debug.Log ("Selected Three Cards!");
+			// temporarily set all as bad:
+			//
+
+			//foreach (int item in selectedCards){
+			//	Debug.Log(item);
+			//}
+			HashSet<int>.Enumerator e = selectedCards.GetEnumerator ();
+			//Debug.Log (e.Current);
+			e.MoveNext ();
+			cardArray [0] = e.Current;
+			e.MoveNext ();
+			cardArray [1] = e.Current;
+			e.MoveNext ();
+			cardArray [2] = e.Current;
+	
+
+			result = isASet (cardArray);
+			if (!result) {
+				cardScripts [cardArray [0]].setAsBadCard ();
+				cardScripts [cardArray [1]].setAsBadCard ();
+				cardScripts [cardArray [2]].setAsBadCard ();
+
+			}
+		}
+	}
 
 	public void clickedOn(int index){
 		// player just clicked on card with index index
 		// now figure out what to do
 		//Debug.Log(index);
 		selectedCards.Add (index);
+		checkForThreeCardsSelected();
 	}
 
 	public void clickedOff(int index){

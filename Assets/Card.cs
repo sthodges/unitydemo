@@ -10,7 +10,7 @@ public class Card: MonoBehaviour {
 
 	[SerializeField] private Sprite initialImage;
 	public Sprite glyph; // any card can only have one glyph
-	private int _cardValue; // TODO REMOVE? REDuNDANT OR NOT NEEDED -- stored in master program?
+	private int _cardValue; // needed, keep here!
 	private int _count;
 	private int _index; // new -- maybe important -- which index position is this card 0-14 (0 - 11 are regular, 12-14 are extra)
 
@@ -24,6 +24,7 @@ public class Card: MonoBehaviour {
 	public SetSolitaireGame parent;
 
 	private bool _selected;
+	private bool _badSelection; //  is card part of a bad selection?
 
 	public Color highlightColor = Color.cyan;
 
@@ -52,16 +53,16 @@ public class Card: MonoBehaviour {
 		// update display of card (?)
 
 	}
-
-	//public int getID(){
-	//	return cardID;
-	//}
-
+		
 
 	public void setCardValue(int cardValue){
 		_cardValue = cardValue;
 		//lo.GetComponent<SpriteRenderer> ().sprite = glyph;
 
+	}
+
+	public int getCardValue(){
+		return _cardValue;
 	}
 
 
@@ -110,9 +111,11 @@ public class Card: MonoBehaviour {
 		if (sprite != null) {
 			if (_selected) {
 				sprite.sprite = _selectedSprite;
+				//Debug.Log (" clicked card index " + _index + "    with value " + _cardValue); // good here
 				parent.clickedOn (_index);
 			} else {
 				sprite.sprite = null;
+				//Debug.Log (" UNclicked card index " + _index + "    with value " + _cardValue); // good here
 				parent.clickedOff (_index);
 			}
 		}
@@ -125,7 +128,11 @@ public class Card: MonoBehaviour {
 		SpriteRenderer sprite = outline.GetComponent<SpriteRenderer> ();
 		if (sprite != null) {
 			if (_selected) {
-				sprite.sprite = _selectedSprite;
+				if (_badSelection) {
+					sprite.sprite = _noMatchSprite;
+				} else {
+					sprite.sprite = _selectedSprite;
+					}
 			} else {
 				sprite.sprite = _highlightedSprite;
 			}
@@ -137,10 +144,28 @@ public class Card: MonoBehaviour {
 		SpriteRenderer sprite = outline.GetComponent<SpriteRenderer> ();
 		if (sprite != null) {
 			if (_selected) {
-				sprite.sprite = _selectedSprite;
+				if (_badSelection) {
+					sprite.sprite = _noMatchSprite;
+				} else {
+					sprite.sprite = _selectedSprite;
+				}
 			} else {
 				sprite.sprite = null;
 			}
 		}
 	}
+
+	// card was one of three selected cards
+	// that doesn't make a set
+	public void setAsBadCard(){
+		_badSelection = true;
+		SpriteRenderer sprite = outline.GetComponent<SpriteRenderer> ();
+		if (sprite != null) {
+				sprite.sprite = _noMatchSprite;	
+		}
+
+
+	}
+
+
 }

@@ -251,9 +251,10 @@ MonoBehaviour:
   glyph: {fileID: 0}
   _selectedSprite: {fileID: 21300000, guid: de2a8f37fd12b48578dce1e7d6f0643c, type: 3}
   _noMatchSprite: {fileID: 21300000, guid: 9f61dc7b71f2d451bbe18d0e4377be87, type: 3}
-  _highlightedSprite: {fileID: 21300000, guid: 0080fdfb90e2842748f6afabc473f67b, type: 3}
+  _highlightedSprite: {fileID: 21300000, guid: bf99f6bb4b7b84ebdae511bf0a5bdc71, type: 3}
   _frontSprite: {fileID: 21300000, guid: 1c5ee1d090c7b4d339b0a6483ed22897, type: 3}
   _frontOverSprite: {fileID: 21300000, guid: 06ebe0b6714204a828364aca5d687c1c, type: 3}
+  parent: {fileID: 0}
   highlightColor: {r: 0, g: 1, b: 1, a: 1}
   top: {fileID: 1510583974138058}
   mid: {fileID: 1660284149781132}
