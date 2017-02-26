@@ -10,8 +10,9 @@ public class Card: MonoBehaviour {
 
 	[SerializeField] private Sprite initialImage;
 	public Sprite glyph; // any card can only have one glyph
-	private int _cardValue;
+	private int _cardValue; // TODO REMOVE? REDuNDANT OR NOT NEEDED -- stored in master program?
 	private int _count;
+	private int _index; // new -- maybe important -- which index position is this card 0-14 (0 - 11 are regular, 12-14 are extra)
 
 	[SerializeField] private Sprite _selectedSprite;
 	[SerializeField] private Sprite _noMatchSprite;
@@ -20,7 +21,7 @@ public class Card: MonoBehaviour {
 	[SerializeField] private Sprite _frontSprite;
 	[SerializeField] private Sprite _frontOverSprite;
 
-
+	public SetSolitaireGame parent;
 
 	private bool _selected;
 
@@ -63,7 +64,20 @@ public class Card: MonoBehaviour {
 
 	}
 
-	// set the number of symbols in this card
+
+	// manually coded setters and getters
+	// TODO: review syntax for auto generation of these
+	public void setIndex(int index){
+		_index = index;
+	}
+
+	public int getIndex(){
+		return _index;
+	}
+
+
+
+	// set the number of symbols in this card and then render it
 	public void setCount(int count){
 		_count = count;
 		lo.GetComponent<SpriteRenderer> ().sprite = null;
@@ -90,15 +104,31 @@ public class Card: MonoBehaviour {
 		//Debug.Log("card down" + cardID);
 
 		//GetComponent<SpriteRenderer> ().sprite = 
+		_selected = ! _selected;
+
+		SpriteRenderer sprite = outline.GetComponent<SpriteRenderer> ();
+		if (sprite != null) {
+			if (_selected) {
+				sprite.sprite = _selectedSprite;
+				parent.clickedOn (_index);
+			} else {
+				sprite.sprite = null;
+				parent.clickedOff (_index);
+			}
+		}
 
 	}
 
 
 	public void OnMouseOver(){
-		Debug.Log("card over: " + _cardValue + "   with count" + _count);
+		//Debug.Log("card over: " + _cardValue + "   with count" + _count);
 		SpriteRenderer sprite = outline.GetComponent<SpriteRenderer> ();
 		if (sprite != null) {
-			sprite.sprite = _highlightedSprite;
+			if (_selected) {
+				sprite.sprite = _selectedSprite;
+			} else {
+				sprite.sprite = _highlightedSprite;
+			}
 		}
 	}
 
@@ -106,7 +136,11 @@ public class Card: MonoBehaviour {
 		//Debug.Log("card exit" + cardID);
 		SpriteRenderer sprite = outline.GetComponent<SpriteRenderer> ();
 		if (sprite != null) {
-			sprite.sprite = null;
+			if (_selected) {
+				sprite.sprite = _selectedSprite;
+			} else {
+				sprite.sprite = null;
+			}
 		}
 	}
 }

@@ -16,11 +16,16 @@ public class SetSolitaireGame : MonoBehaviour {
 	private GameObject[] cardObjects;
 	private Card[] cardScripts;
 
+	private HashSet<int> selectedCards; // the cards,(TODO: by value or by index?) clicked on
+
 
 	// Use this for initialization
 	void Start () {
 		deck = new Deck ();
 		deck.shuffle ();
+
+		selectedCards = new HashSet<int> ();
+
 		int cardValue;
 		int color; // 0-2
 		int shape; // 0-2
@@ -38,7 +43,8 @@ public class SetSolitaireGame : MonoBehaviour {
 			cardObjects [i].transform.position = new Vector3 (_XLEFT + _XOFFSET * (i/3), _YTOP - _YOFFSET * (i%3), 0);
 			cardScripts[i] = cardObjects[i].GetComponent<Card> ();
 
-
+			cardScripts [i].setIndex (i); // set the index of each card so we know later when its clicked
+			cardScripts[i].parent = this; // so card can invoke members in here!
 
 			// make the card the next one dealt from the deck
 			cardValue = deck.getCard();
@@ -67,4 +73,20 @@ public class SetSolitaireGame : MonoBehaviour {
 	void Update () {
 		
 	}
+
+
+	public void clickedOn(int index){
+		// player just clicked on card with index index
+		// now figure out what to do
+		//Debug.Log(index);
+		selectedCards.Add (index);
+	}
+
+	public void clickedOff(int index){
+		// player just clicked on card with index index
+		// now figure out what to do
+		//Debug.Log(index);
+		selectedCards.Remove (index);
+	}
+
 }
