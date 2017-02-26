@@ -4,22 +4,34 @@ using UnityEngine;
 
 public class Card: MonoBehaviour {
 
-	[SerializeField] private int cardID;
-	[SerializeField] private GameObject cardObject;
-	[SerializeField] private GameObject parent;
+	//[SerializeField] private int cardID;
+	//[SerializeField] private GameObject cardObject;
+	//[SerializeField] private GameObject parent;
 
 	[SerializeField] private Sprite initialImage;
-	private Sprite _image;
+	public Sprite glyph; // any card can only have one glyph
 
 	private bool _selected;
 
 	public Color highlightColor = Color.cyan;
 
+
+	// new for testing
+	[SerializeField] private GameObject top;  // used for 3 glyph cards 
+	[SerializeField] private GameObject mid;  // used for 1 and 3 glyph cards
+	[SerializeField] private GameObject bot;  // used for 3 glyph cards
+	[SerializeField] private GameObject hi;   // used for 2 glyph cards
+	[SerializeField] private GameObject lo;   // used for 2 glyph cards
+
+
+
+
 	// Use this for initialization
 	void Start () {
 		_selected = false;
-		_image = initialImage;
-		GetComponent<SpriteRenderer> ().sprite = _image;
+		//_image = initialImage;
+		//GetComponent<SpriteRenderer> ().sprite = _image;
+		lo.GetComponent<SpriteRenderer> ().sprite = glyph;
 	}
 	
 	// Update is called once per frame
@@ -27,9 +39,9 @@ public class Card: MonoBehaviour {
 		
 	}
 
-	public int getID(){
-		return cardID;
-	}
+	//public int getID(){
+	//	return cardID;
+	//}
 
 
 	public void OnMouseDown(){
