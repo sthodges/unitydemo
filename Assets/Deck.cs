@@ -1,8 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿//using System.Collections;
+//using System.Collections.Generic;
+//using UnityEngine;
 
-public class Deck : MonoBehaviour {
+using System;
+
+public class Deck {
 
 	private static int[] _startingDeck = {
 		85, 86, 87, 89, 90, 91, 93, 94, 95, 101, 102, 103,
@@ -16,11 +18,17 @@ public class Deck : MonoBehaviour {
 	};
 
 	private int[] _deck;
+	private int _cardIndex; // next card to deal
+
+	private Random _rng;
 
 
-	// Use this for initialization
-	void Start () {
+	// constructor
+	public Deck () {
 		_deck = new int[81];
+		_cardIndex = 0;
+
+		_rng = new Random ();
 
 		for(int i=0; i<81; i++){
 			_deck[i] = _startingDeck[i];	
@@ -28,22 +36,28 @@ public class Deck : MonoBehaviour {
 			
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
 
 
 	public void shuffle(){
+		
 		int temp;
 		int randomIndex;
 		for(int i=0; i<81; i++){
-			randomIndex = Random.Range (0, i);
+			randomIndex = _rng.Next (0, i);
 			temp = _deck[i];
 			_deck[i] = _deck[randomIndex];
 			_deck[randomIndex] = temp;
 		}
 
 	}
+
+	public int getCard(){
+		int temp = _deck[_cardIndex];
+		_cardIndex += 1;
+		return temp;
+	}
+
+
 
 }

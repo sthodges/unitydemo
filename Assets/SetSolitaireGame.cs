@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class SetSolitaireGame : MonoBehaviour {
 
+	private Deck deck;
+	[SerializeField] private Card[] cards;
+	[SerializeField] private Sprite[] images;
+
 	// Use this for initialization
 	void Start () {
-		
+		deck = new Deck ();
+		deck.shuffle ();
 	}
 	
 	// Update is called once per frame

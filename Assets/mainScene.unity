@@ -170,6 +170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardID: 6
   cardObject: {fileID: 0}
+  image: {fileID: 0}
 --- !u!61 &7003186
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -211,6 +212,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0f23277838594186adb4edcd81c0161, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cards:
+  - {fileID: 1967030411}
+  - {fileID: 1158041936}
+  - {fileID: 943159127}
+  - {fileID: 1275223147}
+  - {fileID: 450847342}
+  - {fileID: 569145297}
+  - {fileID: 7003185}
+  - {fileID: 1673201268}
+  - {fileID: 1924013412}
+  - {fileID: 2121513022}
+  - {fileID: 1213938680}
+  - {fileID: 1291734419}
+  - {fileID: 1215720494}
+  - {fileID: 322936724}
+  - {fileID: 1524685375}
+  images:
+  - {fileID: 21300000, guid: 73fe1c8e604eb42a7a58000c7b223799, type: 3}
+  - {fileID: 21300000, guid: 5a2e7399efa7e4335b4daa3aad926c5e, type: 3}
+  - {fileID: 21300000, guid: 8e836bbd2fb524359b8feeeafbecb9af, type: 3}
+  - {fileID: 21300000, guid: 98e8898690aba4bacae9effbf4b233a1, type: 3}
+  - {fileID: 21300000, guid: c314cbdd5a252471494a8e3b8a333766, type: 3}
+  - {fileID: 21300000, guid: df38d5fe926844d8e8160b0c0a620cb7, type: 3}
+  - {fileID: 21300000, guid: ebc2d52ffdf4e4afe974469115972a0c, type: 3}
+  - {fileID: 21300000, guid: 838a2a347d9114ac79abf1ba38a7e0da, type: 3}
+  - {fileID: 21300000, guid: f280c2841b9d9433abd5c8ca0a75eeee, type: 3}
+  - {fileID: 21300000, guid: 960ed62ddaca24a59bce196f0aa51550, type: 3}
+  - {fileID: 21300000, guid: 170d1815cdd2e4973a5975958b0617ad, type: 3}
+  - {fileID: 21300000, guid: c86a8d711d9f241b898c94861942758b, type: 3}
+  - {fileID: 21300000, guid: d0f5571d6ab9e4f08b2614afa5a5bd41, type: 3}
+  - {fileID: 21300000, guid: 88a1d77b3613e4293ab6523d0d9e8b45, type: 3}
+  - {fileID: 21300000, guid: 647d497d0ac0c41adbf15317a6056e84, type: 3}
+  - {fileID: 21300000, guid: 7033da86e7edb49dbb60c05f5d2ee0d3, type: 3}
+  - {fileID: 21300000, guid: 9a7ef70aa0b344df69bd470110cdd8b4, type: 3}
+  - {fileID: 21300000, guid: e61a0d0ccce7a447f9d38d8cfeb002fa, type: 3}
+  - {fileID: 21300000, guid: f681e407a5a8c435680ad7b0b35ca7d2, type: 3}
+  - {fileID: 21300000, guid: bd1542cb81486453bbd9c4dd9c69bdd5, type: 3}
+  - {fileID: 21300000, guid: d4d917d87fb2149ada0ce9717c97322c, type: 3}
+  - {fileID: 21300000, guid: 901d4b20dd3be4570b3e3342a78bb3cf, type: 3}
+  - {fileID: 21300000, guid: a679c664bfc0d415699759aa3f5added, type: 3}
+  - {fileID: 21300000, guid: 0a43a4a2abd544e36988bf83bae5f782, type: 3}
+  - {fileID: 21300000, guid: 270bd0750fc494a3d94e1c7021028cf8, type: 3}
+  - {fileID: 21300000, guid: c27ebd71785fb46e8958caec16ac039d, type: 3}
+  - {fileID: 21300000, guid: f2decc7472469499e862ab43d7fd8823, type: 3}
 --- !u!4 &164203445
 Transform:
   m_ObjectHideFlags: 0
@@ -390,6 +435,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardID: 12
   cardObject: {fileID: 0}
+  image: {fileID: 0}
 --- !u!61 &322936725
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -497,6 +543,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardID: 5
   cardObject: {fileID: 0}
+  image: {fileID: 0}
 --- !u!1 &569145294
 GameObject:
   m_ObjectHideFlags: 0
@@ -576,6 +623,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardID: 5
   cardObject: {fileID: 0}
+  image: {fileID: 0}
 --- !u!61 &569145298
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -669,6 +717,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardID: 2
   cardObject: {fileID: 0}
+  image: {fileID: 0}
 --- !u!61 &943159128
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -762,6 +811,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardID: 1
   cardObject: {fileID: 0}
+  image: {fileID: 0}
 --- !u!61 &1158041937
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -855,6 +905,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardID: 9
   cardObject: {fileID: 0}
+  image: {fileID: 0}
 --- !u!61 &1213938681
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -948,6 +999,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardID: 11
   cardObject: {fileID: 0}
+  image: {fileID: 0}
 --- !u!61 &1215720495
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1041,6 +1093,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardID: 3
   cardObject: {fileID: 0}
+  image: {fileID: 0}
 --- !u!61 &1275223148
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1134,6 +1187,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardID: 10
   cardObject: {fileID: 0}
+  image: {fileID: 0}
 --- !u!61 &1291734420
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1227,6 +1281,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardID: 13
   cardObject: {fileID: 0}
+  image: {fileID: 0}
 --- !u!61 &1524685376
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1320,6 +1375,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardID: 7
   cardObject: {fileID: 0}
+  image: {fileID: 0}
 --- !u!61 &1673201269
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1414,6 +1470,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardID: 0
   cardObject: {fileID: 0}
+  image: {fileID: 0}
 --- !u!114 &1924013412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1427,6 +1484,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardID: 8
   cardObject: {fileID: 0}
+  image: {fileID: 0}
 --- !u!61 &1924013413
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1534,6 +1592,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardID: 0
   cardObject: {fileID: 0}
+  image: {fileID: 0}
 --- !u!1 &2121513018
 GameObject:
   m_ObjectHideFlags: 0
@@ -1627,3 +1686,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardID: 8
   cardObject: {fileID: 0}
+  image: {fileID: 0}
