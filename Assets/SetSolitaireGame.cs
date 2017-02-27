@@ -31,9 +31,9 @@ public class SetSolitaireGame : MonoBehaviour {
 	private int score;
 
 	// scoring features
-	private const int setCompleted = 20;
-	private const int badSelection = -10;
-	private const int dealButton = -5;
+	private const int setCompletedScore = 20;
+	private const int badSelectionScore = -10;
+	private const int dealButtonScore = -5;
 
 
 	// Use this for initialization
@@ -176,13 +176,13 @@ public class SetSolitaireGame : MonoBehaviour {
 			cardArray [1] = e.Current;
 			e.MoveNext ();
 			cardArray [2] = e.Current;
-	
 
 			result = isASet (cardArray);
 			if (!result) {
 				cardScripts [cardArray [0]].setAsBadCard ();
 				cardScripts [cardArray [1]].setAsBadCard ();
 				cardScripts [cardArray [2]].setAsBadCard ();
+				score += badSelectionScore;
 
 			} else {
 				//Debug.Log ("OMG a match!");
@@ -190,7 +190,7 @@ public class SetSolitaireGame : MonoBehaviour {
 				cardScripts [cardArray [1]].matched ();
 				cardScripts [cardArray [2]].matched ();
 				// clear HashSet
-
+				score += setCompletedScore;
 				replaceCards (cardArray);
 				selectedCards.Clear ();
 			}
@@ -271,6 +271,9 @@ public class SetSolitaireGame : MonoBehaviour {
 		} else {
 			// was already playing
 			if (!fifteen) {
+				// best place for score adjustments
+				score += dealButtonScore;
+
 				fifteen = true;
 				int index = 0;
 				int cardsToDeal = 3;
@@ -301,7 +304,8 @@ public class SetSolitaireGame : MonoBehaviour {
 				// wasn't fifteen
 			} else {
 				// was fifteen cards
-
+				;
+				// so nothing happens and no penalty?
 			}
 		} // was playing
 	} // deal
@@ -362,7 +366,7 @@ public class SetSolitaireGame : MonoBehaviour {
 			string result = string.Format ("{0:00}:{1:00}:{2:000}", minutes, seconds, fraction); 
 			GUI.Label (new Rect (675, 250, 100, 30), result); 
 			// score
-			result = string.Format("000000", score);
+			result = string.Format("{000000}", score);
 			GUI.Label (new Rect (685, 155, 100, 30), result);
 		
 		}
