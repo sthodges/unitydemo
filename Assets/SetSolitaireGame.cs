@@ -197,20 +197,26 @@ public class SetSolitaireGame : MonoBehaviour {
 		cardScripts [targets [2]].redraw ();
 
 		if (fifteen) {
+			// so if there were fifteen cards, don't deal out three new ones
+			// and instead drop to twelve
 			fifteen = false;
 			return;
 		}
 		// here deal out three new cards to replace the cards that were matched
 		// TODO -- some sort of animation or delay here
+		dealOneCardTo(targets[0]);
+		dealOneCardTo(targets[1]);
+		dealOneCardTo(targets[2]);
 
 
 	}
 
 
 	// TODO: a new function to deal one card as helper for various spots in here/the next function????
+	// TODO: use the dealACard(index) helper function where appropriate
 
 	public void deal(){
-		//Debug.Log ("SetSolitaireGame ----> DEAL");
+		Debug.Log ("SetSolitaireGame ----> DEAL");
 		int cardValue;
 		int color; // 0-2
 		int shape; // 0-2
@@ -224,15 +230,15 @@ public class SetSolitaireGame : MonoBehaviour {
 	
 
 			// testing code
-			for(int i=0; i<12; i++){
+			for (int i = 0; i < 12; i++) {
 				// make the card the next one dealt from the deck
-				cardValue = deck.getCard();
-				cardScripts[i].setCardValue( cardValue );
+				cardValue = deck.getCard ();
+				cardScripts [i].setCardValue (cardValue);
 
-				color = (cardValue & 3) -1; // 0,1,2
-				shape = (cardValue & 48) / 16 -1; // 0,1,2
-				fill = (cardValue & 192) / 64 -1; // 0,1,2
-				count = (cardValue & 12) / 4 ; // not -1 so 1, 2, or 3
+				color = (cardValue & 3) - 1; // 0,1,2
+				shape = (cardValue & 48) / 16 - 1; // 0,1,2
+				fill = (cardValue & 192) / 64 - 1; // 0,1,2
+				count = (cardValue & 12) / 4; // not -1 so 1, 2, or 3
 
 				arrayIndexOfCard = color * 9 + shape * 3 + fill;
 
@@ -247,7 +253,7 @@ public class SetSolitaireGame : MonoBehaviour {
 
 
 
-		} /*else {
+		} else {
 			// was already playing
 			if (!fifteen) {
 				fifteen = true;
@@ -282,11 +288,10 @@ public class SetSolitaireGame : MonoBehaviour {
 				// was fifteen cards
 
 			}
-					}*/
-	}
+		} // was playing
+	} // deal
 
 	private void dealOneCardTo(int index){
-
 
 
 		int cardValue;
@@ -299,23 +304,21 @@ public class SetSolitaireGame : MonoBehaviour {
 		cardValue = deck.getCard();
 		cardScripts[index].setCardValue( cardValue );
 
-				color = (cardValue & 3) -1; // 0,1,2
-				shape = (cardValue & 48) / 16 -1; // 0,1,2
-				fill = (cardValue & 192) / 64 -1; // 0,1,2
-				count = (cardValue & 12) / 4 ; // not -1 so 1, 2, or 3
+		color = (cardValue & 3) -1; // 0,1,2
+		shape = (cardValue & 48) / 16 -1; // 0,1,2
+		fill = (cardValue & 192) / 64 -1; // 0,1,2
+		count = (cardValue & 12) / 4 ; // not -1 so 1, 2, or 3
 
-				arrayIndexOfCard = color * 9 + shape * 3 + fill;
+		arrayIndexOfCard = color * 9 + shape * 3 + fill;
 
-				Sprite image = glyphImages [arrayIndexOfCard];
-				cardScripts [index].glyph = image;
+		Sprite image = glyphImages [arrayIndexOfCard];
+		cardScripts [index].glyph = image;
 
-				cardScripts [index].setCount (count);
-				cardScripts [index].redraw ();
-
-
-
+		cardScripts [index].setCount (count);
+		cardScripts [index].redraw ();
 
 	}
+
 
 	public void clickedOn(int index){
 		// player just clicked on card with index index
@@ -324,6 +327,7 @@ public class SetSolitaireGame : MonoBehaviour {
 		selectedCards.Add (index);
 		checkForThreeCardsSelected();
 	}
+
 
 	public void clickedOff(int index){
 		// player just clicked on card with index index

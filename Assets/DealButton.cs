@@ -10,9 +10,11 @@ public class DealButton : MonoBehaviour {
 	[SerializeField] private SetSolitaireGame theGame;
 
 
+	private bool unnecessaryDebounce;
+
 	// Use this for initialization
 	void Start () {
-		
+		unnecessaryDebounce = true;
 	}
 	
 	// Update is called once per frame
@@ -22,11 +24,17 @@ public class DealButton : MonoBehaviour {
 
 	public void OnMouseDown(){
 		//Debug.Log ("Deal With It");
+
 		SpriteRenderer sprite = GetComponent<SpriteRenderer> ();
 		if (sprite != null) {			
 			//sprite.sprite.
-			theGame.deal();
 		}
+
+		if (unnecessaryDebounce) {
+			unnecessaryDebounce = false;
+			theGame.deal ();
+		} 
+
 	}
 
 
@@ -36,6 +44,7 @@ public class DealButton : MonoBehaviour {
 		if (sprite != null) {			
 			//sprite.sprite = dealButtonMouseOver;				
 		}
+		unnecessaryDebounce = true;
 	}
 
 
