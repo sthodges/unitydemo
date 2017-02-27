@@ -26,9 +26,7 @@ public class DealButton : MonoBehaviour {
 		//Debug.Log ("Deal With It");
 
 		SpriteRenderer sprite = GetComponent<SpriteRenderer> ();
-		if (sprite != null) {			
-			//sprite.sprite.
-		}
+		transform.localScale = new Vector3 (1.1f, 1.1f, 1.1f);
 
 		if (unnecessaryDebounce) {
 			unnecessaryDebounce = false;
@@ -41,9 +39,8 @@ public class DealButton : MonoBehaviour {
 	public void OnMouseUp(){
 		//Debug.Log ("Deal With It");
 		SpriteRenderer sprite = GetComponent<SpriteRenderer> ();
-		if (sprite != null) {			
-			//sprite.sprite = dealButtonMouseOver;				
-		}
+		transform.localScale = Vector3.one;
+
 		unnecessaryDebounce = true;
 	}
 
