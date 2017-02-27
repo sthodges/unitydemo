@@ -75,10 +75,24 @@ public class SetSolitaireGame : MonoBehaviour {
 	}
 
 	// do these three cards (by value) make a set?
-	private bool isASet(int [] cards){
+	private bool isASet(int [] cardIndexes){
+		int[] cardValues = new int[3];
 		//Debug.Log (" [1] " + cards [0] + "     [2] " + cards [1] + "     [3] " + cards [2]); // good
 
+		for (int i = 0; i < 3; i++) {
+			cardValues [i] = cardScripts [cardValues [i]].getCardValue ();
+
+		}
+
 		return false;
+	}
+
+	private bool allMatch(int a, int b, int c){
+		return (a == b && b == c);
+	}
+
+	private bool allDiffer(int a, int b, int c){
+		return (a != b && b != c && a != c);
 	}
 
 
