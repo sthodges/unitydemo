@@ -77,14 +77,48 @@ public class SetSolitaireGame : MonoBehaviour {
 	// do these three cards (by value) make a set?
 	private bool isASet(int [] cardIndexes){
 		int[] cardValues = new int[3];
-		//Debug.Log (" [1] " + cards [0] + "     [2] " + cards [1] + "     [3] " + cards [2]); // good
+		int attribA, attribB, attribC; 
+		//Debug.Log (" [1] " + cardIndexes [0] + "     [2] " + cardIndexes [1] + "     [3] " + cardIndexes [2]); // good
 
 		for (int i = 0; i < 3; i++) {
-			cardValues [i] = cardScripts [cardValues [i]].getCardValue ();
-
+			cardValues [i] = cardScripts [cardIndexes [i]].getCardValue ();
+		//	Debug.Log(cardValues[i]);
 		}
+		
+		// check color
+		attribA = cardValues [0] & 3;
+		attribB = cardValues [1] & 3;
+		attribC = cardValues [2] & 3;
+		//Debug.Log (attribA);
+		//Debug.Log (attribB);
+		//Debug.Log (attribC);
 
-		return false;
+
+		//if (!(allMatch (attribA, attribB, attribC) || allDiffer (attribA, attribB, attribC)))
+		if ((!allMatch (attribA, attribB, attribC)) && (!allDiffer (attribA, attribB, attribC))) {
+			return false;
+		} 
+
+		// check shape
+		attribA = cardValues [0] & 48;
+		attribB = cardValues [1] & 48;
+		attribC = cardValues [2] & 48;
+		if ((!allMatch (attribA, attribB, attribC)) && (!allDiffer (attribA, attribB, attribC))){
+			return false;
+		} 
+
+
+		// check fill
+		attribA = cardValues [0] & 192;
+		attribB = cardValues [1] & 192;
+		attribC = cardValues [2] & 192;
+			if ((!allMatch (attribA, attribB, attribC)) && (!allDiffer (attribA, attribB, attribC))){
+			return false;
+		} 
+
+
+
+		return true;
 	}
 
 	private bool allMatch(int a, int b, int c){
@@ -125,6 +159,8 @@ public class SetSolitaireGame : MonoBehaviour {
 				cardScripts [cardArray [1]].setAsBadCard ();
 				cardScripts [cardArray [2]].setAsBadCard ();
 
+			} else {
+				Debug.Log ("OMG a match!");
 			}
 		}
 	}
