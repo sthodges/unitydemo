@@ -18,8 +18,9 @@ public class Card: MonoBehaviour {
 	[SerializeField] private Sprite _noMatchSprite;
 	[SerializeField] private Sprite _highlightedSprite;
 
+	[SerializeField] private Sprite _tableSprite;
 	[SerializeField] private Sprite _frontSprite;
-	[SerializeField] private Sprite _frontOverSprite;
+
 
 	public SetSolitaireGame parent;
 
@@ -58,6 +59,11 @@ public class Card: MonoBehaviour {
 	public void setCardValue(int cardValue){
 		_cardValue = cardValue;
 		//lo.GetComponent<SpriteRenderer> ().sprite = glyph;
+		if (cardValue == -1) {
+			// card was just set to blank
+			_selected = false;
+			_badSelection = false;
+		}
 
 	}
 
@@ -83,20 +89,23 @@ public class Card: MonoBehaviour {
 		mid.GetComponent<SpriteRenderer> ().sprite = null;
 		bot.GetComponent<SpriteRenderer> ().sprite = null;
 
-		if (_cardValue != -1){
+		if (_cardValue != -1) {
+			GetComponent<SpriteRenderer>().sprite = _frontSprite;
+			if (_count == 2) {
+				lo.GetComponent<SpriteRenderer> ().sprite = glyph;
+				hi.GetComponent<SpriteRenderer> ().sprite = glyph;
+			}
+			if (_count == 3) {
+				top.GetComponent<SpriteRenderer> ().sprite = glyph;
+				bot.GetComponent<SpriteRenderer> ().sprite = glyph;
+			}
+			if (_count == 1 || _count == 3) {
+				mid.GetComponent<SpriteRenderer> ().sprite = glyph;
+			}
 
-		if (_count == 2) {
-			lo.GetComponent<SpriteRenderer> ().sprite = glyph;
-			hi.GetComponent<SpriteRenderer> ().sprite = glyph;
-		}
-		if (_count == 3) {
-			top.GetComponent<SpriteRenderer> ().sprite = glyph;
-			bot.GetComponent<SpriteRenderer> ().sprite = glyph;
-		}
-		if (_count == 1 || _count == 3) {
-			mid.GetComponent<SpriteRenderer> ().sprite = glyph;
-		}
-
+		} else {
+			// -1 == no card here
+			GetComponent<SpriteRenderer>().sprite = _tableSprite;
 		}
 	}
 
@@ -111,6 +120,7 @@ public class Card: MonoBehaviour {
 
 	public void OnMouseDown(){
 		//Debug.Log("card down" + cardID);
+		if (_cardValue == -1) return;
 
 		//GetComponent<SpriteRenderer> ().sprite = 
 		_selected = ! _selected;
@@ -133,6 +143,9 @@ public class Card: MonoBehaviour {
 
 
 	public void OnMouseOver(){
+
+		if (_cardValue == -1) return;
+
 		//Debug.Log("card over: " + _cardValue + "   with count" + _count);
 		SpriteRenderer sprite = outline.GetComponent<SpriteRenderer> ();
 		if (sprite != null) {
@@ -149,6 +162,9 @@ public class Card: MonoBehaviour {
 	}
 
 	public void OnMouseExit(){
+		if (_cardValue == -1) return;
+
+
 		//Debug.Log("card exit" + cardID);
 		SpriteRenderer sprite = outline.GetComponent<SpriteRenderer> ();
 		if (sprite != null) {

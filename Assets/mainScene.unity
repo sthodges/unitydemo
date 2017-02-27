@@ -341,3 +341,4 @@ MonoBehaviour:
   dealButtonNormal: {fileID: 21300000, guid: d8df29575c5f444199dc42a140f6f772, type: 3}
   dealButtonMouseOver: {fileID: 21300000, guid: a6022d6b95e414658bfcfaa866d54326,
     type: 3}
+  theGame: {fileID: 164203444}

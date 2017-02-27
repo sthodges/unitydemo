@@ -33,7 +33,7 @@ public class SetSolitaireGame : MonoBehaviour {
 		playing = false;
 
 		selectedCards = new HashSet<int> ();
-
+		/*
 		int cardValue;
 		int color; // 0-2
 		int shape; // 0-2
@@ -41,7 +41,7 @@ public class SetSolitaireGame : MonoBehaviour {
 		int count; // 0-2
 
 		int arrayIndexOfCard;
-
+		*/
 		cardObjects = new GameObject[15];
 		cardScripts = new Card[15];
 
@@ -54,7 +54,12 @@ public class SetSolitaireGame : MonoBehaviour {
 			cardScripts [i].setIndex (i); // set the index of each card so we know later when its clicked
 			cardScripts[i].parent = this; // so card can invoke members in here!
 
-			// make the card the next one dealt from the deck
+			cardScripts [i].setCardValue (-1);
+			cardScripts [i].redraw ();
+			//cardScripts [i].glyph = null;
+
+			// make the card represent an empty spot on the board
+			/*
 			cardValue = deck.getCard();
 			cardScripts[i].setCardValue( cardValue );
 
@@ -69,7 +74,7 @@ public class SetSolitaireGame : MonoBehaviour {
 			cardScripts [i].glyph = image;
 
 			cardScripts [i].setCount (count);
-
+			*/
 
 
 		}
@@ -195,10 +200,120 @@ public class SetSolitaireGame : MonoBehaviour {
 			fifteen = false;
 			return;
 		}
+		// here deal out three new cards to replace the cards that were matched
+		// TODO -- some sort of animation or delay here
+
+
 	}
+
+
+	// TODO: a new function to deal one card as helper for various spots in here/the next function????
 
 	public void deal(){
 		//Debug.Log ("SetSolitaireGame ----> DEAL");
+		int cardValue;
+		int color; // 0-2
+		int shape; // 0-2
+		int fill; // 0-2
+		int count; // 0-2
+		int arrayIndexOfCard;
+		if (!playing) {
+			playing = true;
+			fifteen = false;
+
+	
+
+			// testing code
+			for(int i=0; i<12; i++){
+				// make the card the next one dealt from the deck
+				cardValue = deck.getCard();
+				cardScripts[i].setCardValue( cardValue );
+
+				color = (cardValue & 3) -1; // 0,1,2
+				shape = (cardValue & 48) / 16 -1; // 0,1,2
+				fill = (cardValue & 192) / 64 -1; // 0,1,2
+				count = (cardValue & 12) / 4 ; // not -1 so 1, 2, or 3
+
+				arrayIndexOfCard = color * 9 + shape * 3 + fill;
+
+				Sprite image = glyphImages [arrayIndexOfCard];
+				cardScripts [i].glyph = image;
+
+				cardScripts [i].setCount (count);
+				cardScripts [i].redraw ();
+
+
+			}
+
+
+
+		} /*else {
+			// was already playing
+			if (!fifteen) {
+				fifteen = true;
+				int index = 0;
+				int cardsToDeal = 3;
+				while (cardsToDeal > 0) {
+					if (cardScripts [index].getCardValue () == -1) {
+						// found an ampty spot to deal into
+						cardValue = deck.getCard ();
+						cardScripts [index].setCardValue (cardValue);
+
+						color = (cardValue & 3) - 1; // 0,1,2
+						shape = (cardValue & 48) / 16 - 1; // 0,1,2
+						fill = (cardValue & 192) / 64 - 1; // 0,1,2
+						count = (cardValue & 12) / 4; // not -1 so 1, 2, or 3
+
+						arrayIndexOfCard = color * 9 + shape * 3 + fill;
+
+						Sprite image = glyphImages [arrayIndexOfCard];
+						cardScripts [index].glyph = image;
+
+						cardScripts [index].setCount (count);
+						cardScripts [index].redraw ();
+
+						cardsToDeal -= 1;
+					} else {
+						index++;
+					}
+				}
+				// wasn't fifteen
+			} else {
+				// was fifteen cards
+
+			}
+					}*/
+	}
+
+	private void dealOneCardTo(int index){
+
+
+
+		int cardValue;
+		int color; // 0-2
+		int shape; // 0-2
+		int fill; // 0-2
+		int count; // 0-2
+		int arrayIndexOfCard;
+
+		cardValue = deck.getCard();
+		cardScripts[index].setCardValue( cardValue );
+
+				color = (cardValue & 3) -1; // 0,1,2
+				shape = (cardValue & 48) / 16 -1; // 0,1,2
+				fill = (cardValue & 192) / 64 -1; // 0,1,2
+				count = (cardValue & 12) / 4 ; // not -1 so 1, 2, or 3
+
+				arrayIndexOfCard = color * 9 + shape * 3 + fill;
+
+				Sprite image = glyphImages [arrayIndexOfCard];
+				cardScripts [index].glyph = image;
+
+				cardScripts [index].setCount (count);
+				cardScripts [index].redraw ();
+
+
+
 
 	}
 
