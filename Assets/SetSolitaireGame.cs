@@ -8,10 +8,10 @@ public class SetSolitaireGame : MonoBehaviour {
 	[SerializeField] private Sprite[] glyphImages;
 	[SerializeField] private GameObject cardPrefab;
 
-	private float _XLEFT = -5.0f;
-	private float _XOFFSET = 1.85f;
-	private float _YTOP = 3.5f;
-	private float _YOFFSET = 2.2f;
+	private const float XLeftEdge = -5.0f;
+	private const float _XOffset = 1.85f;
+	private const float _YTopEdge = 3.5f;
+	private const float _YOffset = 2.2f;
 
 	private GameObject[] cardObjects;
 	private Card[] cardScripts;
@@ -57,10 +57,10 @@ public class SetSolitaireGame : MonoBehaviour {
 		cardObjects = new GameObject[15];
 		cardScripts = new Card[15];
 
-		// testing code
+		// layout all the "spots" for where cards go during gameplay
 		for(int i=0; i<15; i++){
 			cardObjects [i] = Instantiate (cardPrefab) as GameObject;
-			cardObjects [i].transform.position = new Vector3 (_XLEFT + _XOFFSET * (i/3), _YTOP - _YOFFSET * (i%3), 0);
+			cardObjects [i].transform.position = new Vector3 (XLeftEdge + _XOffset * (i/3), _YTopEdge - _YOffset * (i%3), 0);
 			cardScripts[i] = cardObjects[i].GetComponent<Card> ();
 
 			cardScripts [i].setIndex (i); // set the index of each card so we know later when its clicked
@@ -68,31 +68,9 @@ public class SetSolitaireGame : MonoBehaviour {
 
 			cardScripts [i].setCardValue (-1);
 			cardScripts [i].redraw ();
-			//cardScripts [i].glyph = null;
+		}			
+	} // start
 
-			// make the card represent an empty spot on the board
-			/*
-			cardValue = deck.getCard();
-			cardScripts[i].setCardValue( cardValue );
-
-			color = (cardValue & 3) -1; // 0,1,2
-			shape = (cardValue & 48) / 16 -1; // 0,1,2
-			fill = (cardValue & 192) / 64 -1; // 0,1,2
-			count = (cardValue & 12) / 4 ; // not -1 so 1, 2, or 3
-
-			arrayIndexOfCard = color * 9 + shape * 3 + fill;
-
-			Sprite image = glyphImages [arrayIndexOfCard];
-			cardScripts [i].glyph = image;
-
-			cardScripts [i].setCount (count);
-			*/
-
-
-		}
-
-
-	}
 	
 	// Update is called once per frame
 	void Update () {
