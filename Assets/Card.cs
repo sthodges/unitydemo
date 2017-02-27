@@ -76,28 +76,36 @@ public class Card: MonoBehaviour {
 		return _index;
 	}
 
-
-
-	// set the number of symbols in this card and then render it
-	public void setCount(int count){
-		_count = count;
+	public void redraw(){
 		lo.GetComponent<SpriteRenderer> ().sprite = null;
 		hi.GetComponent<SpriteRenderer> ().sprite = null;
 		top.GetComponent<SpriteRenderer> ().sprite = null;
 		mid.GetComponent<SpriteRenderer> ().sprite = null;
 		bot.GetComponent<SpriteRenderer> ().sprite = null;
-		if (count == 2) {
+
+		if (_cardValue != -1){
+
+		if (_count == 2) {
 			lo.GetComponent<SpriteRenderer> ().sprite = glyph;
 			hi.GetComponent<SpriteRenderer> ().sprite = glyph;
 		}
-		if (count == 3) {
+		if (_count == 3) {
 			top.GetComponent<SpriteRenderer> ().sprite = glyph;
 			bot.GetComponent<SpriteRenderer> ().sprite = glyph;
 		}
-		if (count == 1 || count == 3) {
+		if (_count == 1 || _count == 3) {
 			mid.GetComponent<SpriteRenderer> ().sprite = glyph;
 		}
 
+		}
+	}
+
+
+	// set the number of symbols in this card and then render it
+	public void setCount(int count){
+		_count = count;
+
+		redraw ();
 	}
 
 
@@ -117,6 +125,7 @@ public class Card: MonoBehaviour {
 				sprite.sprite = null;
 				//Debug.Log (" UNclicked card index " + _index + "    with value " + _cardValue); // good here
 				parent.clickedOff (_index);
+				_badSelection = false;
 			}
 		}
 
@@ -164,6 +173,23 @@ public class Card: MonoBehaviour {
 				sprite.sprite = _noMatchSprite;	
 		}
 
+
+	}
+
+
+	// card was one of three selected cards
+	// that makes make a set
+	public void matched(){
+		_badSelection = false;
+		_selected = false;
+		SpriteRenderer sprite1 = outline.GetComponent<SpriteRenderer> ();
+		if (sprite1 != null) {
+			sprite1.sprite = null;	
+		}
+		SpriteRenderer sprite = GetComponent<SpriteRenderer> ();
+		if (sprite != null) {
+			sprite.sprite = null;	
+		}
 
 	}
 

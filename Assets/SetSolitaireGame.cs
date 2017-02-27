@@ -18,11 +18,19 @@ public class SetSolitaireGame : MonoBehaviour {
 
 	private HashSet<int> selectedCards; // the cards,(TODO: by value or by index?) clicked on
 
+	// are usual 12 cards on the table or extra 15
+	private bool fifteen;
+
+	// game in progress
+	private bool playing;
 
 	// Use this for initialization
 	void Start () {
 		deck = new Deck ();
 		deck.shuffle ();
+
+		fifteen = false;
+		playing = false;
 
 		selectedCards = new HashSet<int> ();
 
@@ -116,6 +124,13 @@ public class SetSolitaireGame : MonoBehaviour {
 			return false;
 		} 
 
+		//check count
+		attribA = cardValues [0] & 12;
+		attribB = cardValues [1] & 12;
+		attribC = cardValues [2] & 12;
+		if ((!allMatch (attribA, attribB, attribC)) && (!allDiffer (attribA, attribB, attribC))){
+			return false;
+		}
 
 
 		return true;
@@ -132,17 +147,10 @@ public class SetSolitaireGame : MonoBehaviour {
 
 
 	private void checkForThreeCardsSelected(){
-		int [] cardArray = new int[3];
+		int[] cardArray = new int[3];
 		bool result;
 
 		if (selectedCards.Count == 3) {
-			//Debug.Log ("Selected Three Cards!");
-			// temporarily set all as bad:
-			//
-
-			//foreach (int item in selectedCards){
-			//	Debug.Log(item);
-			//}
 			HashSet<int>.Enumerator e = selectedCards.GetEnumerator ();
 			//Debug.Log (e.Current);
 			e.MoveNext ();
@@ -160,9 +168,38 @@ public class SetSolitaireGame : MonoBehaviour {
 				cardScripts [cardArray [2]].setAsBadCard ();
 
 			} else {
-				Debug.Log ("OMG a match!");
+				//Debug.Log ("OMG a match!");
+				cardScripts [cardArray [0]].matched ();
+				cardScripts [cardArray [1]].matched ();
+				cardScripts [cardArray [2]].matched ();
+				// clear HashSet
+
+				replaceCards (cardArray);
+				selectedCards.Clear ();
 			}
 		}
+	}
+
+
+	public void replaceCards(int []targets){
+		cardScripts [targets [0]].setCardValue(-1);
+		cardScripts [targets [0]].redraw ();
+
+		cardScripts [targets [1]].setCardValue(-1);
+		cardScripts [targets [1]].redraw ();
+
+		cardScripts [targets [2]].setCardValue(-1);
+		cardScripts [targets [2]].redraw ();
+
+		if (fifteen) {
+			fifteen = false;
+			return;
+		}
+	}
+
+	public void deal(){
+		//Debug.Log ("SetSolitaireGame ----> DEAL");
+
 	}
 
 	public void clickedOn(int index){

@@ -7,6 +7,7 @@ public class DealButton : MonoBehaviour {
 	[SerializeField] private Sprite dealButtonNormal;
 	[SerializeField] private Sprite dealButtonMouseOver;
 
+	[SerializeField] private SetSolitaireGame theGame;
 
 
 	// Use this for initialization
@@ -23,7 +24,8 @@ public class DealButton : MonoBehaviour {
 		//Debug.Log ("Deal With It");
 		SpriteRenderer sprite = GetComponent<SpriteRenderer> ();
 		if (sprite != null) {			
-			//sprite.sprite.				
+			//sprite.sprite.
+			theGame.deal();
 		}
 	}
 
