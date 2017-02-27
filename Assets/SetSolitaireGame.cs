@@ -24,6 +24,11 @@ public class SetSolitaireGame : MonoBehaviour {
 	// game in progress
 	private bool playing;
 
+	// game play time
+	private float startTime;
+
+
+
 	// Use this for initialization
 	void Start () {
 		deck = new Deck ();
@@ -216,7 +221,7 @@ public class SetSolitaireGame : MonoBehaviour {
 	// TODO: use the dealACard(index) helper function where appropriate
 
 	public void deal(){
-		Debug.Log ("SetSolitaireGame ----> DEAL");
+		//Debug.Log ("SetSolitaireGame ----> DEAL");
 		int cardValue;
 		int color; // 0-2
 		int shape; // 0-2
@@ -248,6 +253,9 @@ public class SetSolitaireGame : MonoBehaviour {
 				cardScripts [i].setCount (count);
 				cardScripts [i].redraw ();
 
+
+				// start the game timer!
+				startTime = Time.time;
 
 			}
 
@@ -334,6 +342,22 @@ public class SetSolitaireGame : MonoBehaviour {
 		// now figure out what to do
 		//Debug.Log(index);
 		selectedCards.Remove (index);
+	}
+
+
+	public void OnGUI(){
+		if (playing) {
+			float guiTime = Time.time - startTime;
+
+
+			int minutes = (int)guiTime / 60;
+			int seconds = (int)guiTime % 60;
+			int fraction = (int)(guiTime * 100) % 100;
+
+
+			string result = string.Format ("{0:00}:{1:00}:{2:000}", minutes, seconds, fraction); 
+			GUI.Label (new Rect (675, 250, 100, 30), result); 
+		}
 	}
 
 }
