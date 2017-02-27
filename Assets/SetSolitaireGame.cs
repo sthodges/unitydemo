@@ -376,3 +376,7 @@ public class SetSolitaireGame : MonoBehaviour {
 	}
 
 }
+
+
+// TODO:  align label coordinates to display boxes
+// TODO:  game end condition and bottom of the deck addtiions
