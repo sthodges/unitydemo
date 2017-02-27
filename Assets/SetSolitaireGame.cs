@@ -27,6 +27,13 @@ public class SetSolitaireGame : MonoBehaviour {
 	// game play time
 	private float startTime;
 
+	// game score
+	private int score;
+
+	// scoring features
+	private const int setCompleted = 20;
+	private const int badSelection = -10;
+	private const int dealButton = -5;
 
 
 	// Use this for initialization
@@ -347,17 +354,21 @@ public class SetSolitaireGame : MonoBehaviour {
 
 	public void OnGUI(){
 		if (playing) {
+			// timer
 			float guiTime = Time.time - startTime;
-
-
 			int minutes = (int)guiTime / 60;
 			int seconds = (int)guiTime % 60;
 			int fraction = (int)(guiTime * 100) % 100;
-
-
 			string result = string.Format ("{0:00}:{1:00}:{2:000}", minutes, seconds, fraction); 
 			GUI.Label (new Rect (675, 250, 100, 30), result); 
+			// score
+			result = string.Format("000000", score);
+			GUI.Label (new Rect (685, 155, 100, 30), result);
+		
 		}
+
+
+
 	}
 
 }
