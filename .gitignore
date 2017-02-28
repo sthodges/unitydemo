@@ -28,3 +28,14 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
+# BELOW HERE -- Added by SJH
+
+# MAcOS
+.DS_Store
+
+# compiled binaries
+*.app
+
+# emacs
+*~
