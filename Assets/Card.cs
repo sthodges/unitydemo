@@ -27,6 +27,7 @@ public class Card: MonoBehaviour {
 	private bool _selected;
 	private bool _badSelection; //  is card part of a bad selection?
 
+	// TODO: remove this probably not going to be used; not used now
 	public Color highlightColor = Color.cyan;
 
 
