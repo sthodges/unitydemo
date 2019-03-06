@@ -1,4 +1,8 @@
-﻿using System.Collections;
+﻿// Steve J. Hodges, 2d Card Game Unity Example
+// Cabrillo College, sthodges@cabrillo.edu
+
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
